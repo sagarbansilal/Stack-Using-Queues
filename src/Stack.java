@@ -65,4 +65,11 @@ public class Stack<E> {
 		if(queue1.isEmpty()) return queue2.size();
 		return queue1.size();
 	}
+	
+	public boolean contains(E element){
+		if(queue1.isEmpty()){
+			return queue2.contains(element);
+		}
+		return queue1.contains(element);
+	}
 }
