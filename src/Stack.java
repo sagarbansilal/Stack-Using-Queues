@@ -16,24 +16,17 @@ public class Stack<E> {
 	}
 	
 	public void push(E element){
-		if(queue1.isEmpty()){
-			queue2.add(element);
-		}else{
-			queue1.add(element);
-		}
+		if(queue1.isEmpty()) queue2.add(element);
+		else queue1.add(element);
 	}
 	
 	public E pop(){
 		if(queue1.isEmpty() && queue2.isEmpty()) return null;
 		if(queue1.isEmpty()){
-			while(queue2.size()>1){
-				queue1.add(queue2.poll());
-			}
+			while(queue2.size()>1) queue1.add(queue2.poll());
 			return queue2.poll();
 		}else{
-			while(queue1.size()>1){
-				queue2.add(queue1.poll());
-			}
+			while(queue1.size()>1) queue2.add(queue1.poll());
 			return queue1.poll();
 		}
 	}
@@ -41,16 +34,12 @@ public class Stack<E> {
 	public E peek(){
 		if(queue1.isEmpty() && queue2.isEmpty()) return null;
 		if(queue1.isEmpty()){
-			while(queue2.size()>1){
-				queue1.add(queue2.poll());
-			}
+			while(queue2.size()>1) queue1.add(queue2.poll());
 			E element=queue2.poll();
 			queue1.add(element);
 			return element;
 		}else{
-			while(queue1.size()>1){
-				queue2.add(queue1.poll());
-			}
+			while(queue1.size()>1) queue2.add(queue1.poll());
 			E element=queue1.poll();
 			queue2.add(element);
 			return element;
@@ -67,9 +56,7 @@ public class Stack<E> {
 	}
 	
 	public boolean contains(E element){
-		if(queue1.isEmpty()){
-			return queue2.contains(element);
-		}
+		if(queue1.isEmpty()) return queue2.contains(element);
 		return queue1.contains(element);
 	}
 }
